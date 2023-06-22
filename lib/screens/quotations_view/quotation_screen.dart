@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:quotation/controllers/quotation_controller.dart';
+import 'package:quotation/utils/routes/routes_name.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../widgets/my_listTile.dart';
-import 'add_quotation.dart';
 
 class QuotationScreen extends StatelessWidget {
   const QuotationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // var quoteController = Get.find<QuotationController>();
     return Scaffold(
         appBar: AppBar(
           title: const Text("Quotation"),
@@ -25,7 +23,7 @@ class QuotationScreen extends StatelessWidget {
                   MyListTile(
                     title: "Quotation",
                     onTap: () {
-                      Get.to(() => const AddQuotationScreen());
+                      Get.toNamed(RoutesName.addQuotationScreen);
                     },
                     icon: Icons.holiday_village,
                   ),

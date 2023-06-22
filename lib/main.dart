@@ -12,11 +12,14 @@ import 'utils/routes/routes_name.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //----Hive initilization----//
   var directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   Hive.registerAdapter(AddQuoteDetalisMoidelAdapter());
   await Hive.openBox<AddQuoteDetalisMoidel>('myQuotations');
+  //----Bindings initilization----//
   RootBinding().dependencies();
+  //----Firebase initilization----//
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,7 +29,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

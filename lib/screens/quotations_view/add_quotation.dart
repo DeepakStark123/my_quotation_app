@@ -1,5 +1,7 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quotation/utils/my_colors.dart';
 import 'package:quotation/widgets/mybtn.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -45,12 +47,25 @@ class AddQuotationScreen extends GetView<QuotationController> {
                                 }
                                 return null;
                               },
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.black)),
                                 hintText: "3",
+                                hintStyle:
+                                    const TextStyle(color: Colors.black26),
+                                suffixIcon: MyBtn(
+                                  onPressed: () {
+                                    controller.incrementQuoteNo();
+                                  },
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             ),
                             5.heightBox,
@@ -93,12 +108,15 @@ class AddQuotationScreen extends GetView<QuotationController> {
                                 }
                                 return null;
                               },
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.text,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.black)),
                                 hintText: "Deepak kumar",
+                                hintStyle: TextStyle(color: Colors.black26),
                               ),
                             ),
                             5.heightBox,
@@ -112,12 +130,15 @@ class AddQuotationScreen extends GetView<QuotationController> {
                                 return null;
                               },
                               controller: controller.mobileController,
-                              keyboardType: TextInputType.number,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              keyboardType: TextInputType.phone,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.black)),
                                 hintText: "+918527715662",
+                                hintStyle: TextStyle(color: Colors.black26),
                               ),
                             ),
                             "Email".text.size(14).make(),
@@ -127,15 +148,21 @@ class AddQuotationScreen extends GetView<QuotationController> {
                                 if (value == null || value.isEmpty) {
                                   return 'Enter email';
                                 }
+                                if (EmailValidator.validate(value) == false) {
+                                  return "Please enter valid email";
+                                }
                                 return null;
                               },
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               controller: controller.emailController,
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.emailAddress,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.black)),
                                 hintText: "depak123@gmail.con",
+                                hintStyle: TextStyle(color: Colors.black26),
                               ),
                             ),
                           ],
@@ -151,7 +178,10 @@ class AddQuotationScreen extends GetView<QuotationController> {
                           controller.addQuote();
                         }
                       },
-                      child: const Text("Save"),
+                      child: const Text(
+                        "Save",
+                        style: TextStyle(color: lightTextColor),
+                      ),
                     ).expand(),
                   ],
                 ),

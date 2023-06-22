@@ -1,9 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: file_names
+
 import 'package:hive/hive.dart';
+
 part 'add_quateDetails_model.g.dart';
 
 @HiveType(typeId: 0)
-class AddQuoteDetalisMoidel {
+class AddQuoteDetalisMoidel extends HiveObject {
   @HiveField(0)
   final int quoteNo;
   @HiveField(1)
@@ -23,4 +25,3 @@ class AddQuoteDetalisMoidel {
     required this.email,
   });
 }
-

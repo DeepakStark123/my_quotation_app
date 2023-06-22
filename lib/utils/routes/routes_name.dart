@@ -4,4 +4,5 @@ class RoutesName {
   static const loginScreen = '/login_screen';
   static const signupScreen = '/signup_screen';
   static const quotationScreen = '/quotation_screen';
+  static const addQuotationScreen = '/add_quotation_screen';
 }

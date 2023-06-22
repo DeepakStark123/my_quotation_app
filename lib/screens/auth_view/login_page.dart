@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                   onChanged: (value) {
                     loginController.isValid();
                   },
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black)),
